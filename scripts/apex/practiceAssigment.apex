@@ -1,0 +1,1 @@
+practiceAssigment1.stgName();

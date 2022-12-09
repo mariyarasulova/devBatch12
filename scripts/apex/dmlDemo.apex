@@ -7,3 +7,5 @@ DMLDemo.dmlUpdate_2_cO();
 DMLDemo.dmlInsertMultiple_right();
 DMLDemo.dmlInsertmultiple_right2();
 DMLDemo.dmlMultipleRecordUpdate_right();
+list<account>listAccount = [select id from account where createddate = THIS_WEEK ];
+delete listAccount;
