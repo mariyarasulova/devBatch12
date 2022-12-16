@@ -1,6 +1,36 @@
 trigger ContactTrigger on Contact (before insert, after insert, before update, after update) {
-    if(trigger.isBefore){
-system.debug('we are in BEFORE trigger.');
+map<id, contact> cntmap = new Map <id, contact>();
+list<account>updateAccList = new list <account>();
+for(contact eachCnt : trigger.new){
+    cntMap.put(eachCnt.accountId,eachCnt);
+}
+
+list<account>accList = [select id, phone from account where id =: cntMap.keySet()];
+for(account eachAcc : accList){
+    eachAcc.Phone = cntMap.get(eachAcc.id).phone;
+    updateAccList.add(eachAcc);
+}
+ update updateAccList;
+
+
+
+   /* if(trigger.isBefore){
+        if(trigger.isUpdate){
+            system.debug('we are in before update trigger');
+            ContactTriggerHandlet.contactUpdatevalidation1(Trigger.New, Trigger.Old, Trigger.OldMap, Trigger.NewMap);*/
+        }
+
+
+
+
+
+
+
+
+
+
+
+/*system.debug('we are in BEFORE trigger.');
 
 
 if(trigger.isInsert){
@@ -22,5 +52,4 @@ if(trigger.isUpdate){
     system.debug( 'we are in AFTER  Update Trigger.'); 
 }
 
-}
-}
+}*/
