@@ -17,4 +17,24 @@ public  class AccountTriggerHundler {
         }
         }
    }
+
+   public static void updateVIPforContacts(list <account> accTriggerNew,list<account> accTriggerOld,Map<id, account> accTriggerOldMap,Map<id, account> accTriggerNewMap){
+    
+    set<id> setAccIDs = new set<id>();
+    for(account eachAcc :accTriggerNew){
+        if(eachAcc.VIP__c !=accTriggerOldMap.get(eachAcc.id).VIP__c){
+            setAccIDs.add(eachAcc.id);
+        }
+    }
+    list<contact> listContacts = [select id, name, account.id, vip__c from contact where account.id in : setAccIDs];
+    if(!listContacts.isEmpty()){
+    for(contact eachContact : listContacts){
+        boolean accVIP = accTriggerNewMap.get(eachContact.Account.Id).VIP__c;
+        eachContact.VIP__c = accVIP;
+    }
+
+
+update listContacts;
+   }
+}
 }

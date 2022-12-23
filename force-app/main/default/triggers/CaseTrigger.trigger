@@ -1,6 +1,29 @@
-trigger CaseTrigger on Case (before update,after update, before insert, after insert) {
+trigger CaseTrigger on Case ( before update){
 
-If(Trigger.isAfter && Trigger.isInsert){
+if (trigger.isUpdate){
+    //count number of times trigger run
+    system.debug('before update trigger run');
+    CaseTriggerHundler.countTriggerExecution++;
+    system.debug('# of times trigger run--> ' +  CaseTriggerHundler.countTriggerExecution);
+
+    CaseTriggerHundler.countRecordUpdated += trigger.size;
+    system.debug('# of total records updated => ' + CaseTriggerHundler.countRecordUpdated);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*If(Trigger.isAfter && Trigger.isInsert){
  for(Case eachCase : Trigger.new){
     if(eachCase.origin == 'Email'){
         eachCase.Status = 'New';

@@ -3,6 +3,9 @@ trigger AccountTrigger1 on Account (before insert, before update, after insert, 
 if(Trigger.isBefore){
     AccountTriggerHundler.updateAccountDescription(trigger.new, trigger.old, trigger.newMap, trigger.oldMap);
     }
+    if(trigger.isAfter && trigger.isUpdate){
+        AccountTriggerHundler.updateVIPforContacts(trigger.new, trigger.old, trigger.oldMap,trigger.newMap); 
+    }
 }
 
 

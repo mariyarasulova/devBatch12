@@ -1,5 +1,5 @@
 trigger ContactTrigger on Contact (before insert, after insert, before update, after update) {
-map<id, contact> cntmap = new Map <id, contact>();
+/*map<id, contact> cntmap = new Map <id, contact>();
 list<account>updateAccList = new list <account>();
 for(contact eachCnt : trigger.new){
     cntMap.put(eachCnt.accountId,eachCnt);
@@ -10,15 +10,19 @@ for(account eachAcc : accList){
     eachAcc.Phone = cntMap.get(eachAcc.id).phone;
     updateAccList.add(eachAcc);
 }
- update updateAccList;
+ update updateAccList;*/
 
 
 
-   /* if(trigger.isBefore){
+    if(trigger.isBefore){
         if(trigger.isUpdate){
             system.debug('we are in before update trigger');
-            ContactTriggerHandlet.contactUpdatevalidation1(Trigger.New, Trigger.Old, Trigger.OldMap, Trigger.NewMap);*/
+            ContactTriggerHandlet.contactUpdatevalidation1(Trigger.New, Trigger.Old,Trigger.NewMap, Trigger.OldMap );
+            ContactTriggerHandlet.contactUpdatevalidation2(Trigger.New, Trigger.Old,Trigger.NewMap, Trigger.OldMap );
+
         }
+    }
+}
 
 
 
