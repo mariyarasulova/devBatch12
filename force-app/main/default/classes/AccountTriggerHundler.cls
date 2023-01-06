@@ -1,4 +1,4 @@
-public  class AccountTriggerHundler {
+public   class AccountTriggerHundler {
    public static void updateAccountDescription(list <account> accTriggerNew,list<account> accTriggerOld,Map<id, account> accTriggerOldMap,Map<id, account> accTriggerNewMap){
     for(Account eachAcc : accTriggerNew ){
         boolean updateDesc = false;
@@ -18,7 +18,7 @@ public  class AccountTriggerHundler {
         }
    }
 
-   public static void updateVIPforContacts(list <account> accTriggerNew,list<account> accTriggerOld,Map<id, account> accTriggerOldMap,Map<id, account> accTriggerNewMap){
+   public static void updateVIPforContacts(list <a ccount> accTriggerNew,list<account> accTriggerOld,Map<id, account> accTriggerOldMap,Map<id, account> accTriggerNewMap){
     
     set<id> setAccIDs = new set<id>();
     for(account eachAcc :accTriggerNew){
