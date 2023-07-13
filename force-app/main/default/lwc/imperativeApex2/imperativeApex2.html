@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Imperative Apex -Industry" icon-name="standard:account">
+        <div class="slds-var-m-around_medium">
+            <lightning-combobox
+            label="Select your Industry"
+            options={industryOptions}
+            onchange={changeHandler}>
+        </lightning-combobox>
+        <div class="slds-var-m-top_small">
+            <template if:true={accounts}>
+                <lightning-datatable
+                key-field="Id"
+                data={accounts}
+                columns={columns}>
+            </lightning-datatable>
+            </template>
+        </div>
+        </div>
+    </lightning-card>
+</template>

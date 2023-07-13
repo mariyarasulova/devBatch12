@@ -24,3 +24,5 @@ for (Database.SaveResult r : results) {
         system.debug('errored out. error is ... ' + r.getErrors());
     }
 }
+ValidateAddress va= new ValidateAddress();
+va.validateHomeAddress();
